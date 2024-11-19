@@ -89,3 +89,12 @@ resource "aws_security_group" "loacl_sg" {
     }
   
 }
+
+#create EC2 Instance
+resource "aws_instance" "local_ec2" {
+  ami = "ami-0aebec83a182ea7ea"
+  instance_type = "t2.micro"
+  subnet_id = aws_subnet.public.id 
+  #security_id = [aws_security_group.local_sg.id]
+  key_name = "aws"
+}
